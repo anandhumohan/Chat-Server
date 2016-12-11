@@ -25,4 +25,17 @@ io.sockets.on('connection',function(socket){
 	socket.on('send message',function(data){
 	io.sockets.emit('new message',{msg:data});
 	});
+
+	socket.on('new user',function(data, callback){
+	//io.sockets.emit('new user',{msg:data});
+	callback(true);
+	socket.username = data;
+	users.push(socket.username);
+	updateUser(); 
+
+	});
+	function updateUser(){
+		io.sockets.emit('get users',users);
+	}
+
 });
