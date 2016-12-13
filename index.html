@@ -84,12 +84,16 @@ $(function(){
  	$chat.append('<div class = "well">'+data.msg+'</div>');
  });
 
- socket.on('get users',function(){
+ socket.on('get users',function(data){
  	var html = '';
  	for(i=0;i<data.length;i++){
  		html +='<li class = "list-group-item">'+data[i]+'</li>';
  	}
  	$users.html(html);
+ });
+
+ socket.on('new again',function(data){
+	$chat.append('<div class = "well">'+data.msg+'</div>');
  });
 });
 </script>
