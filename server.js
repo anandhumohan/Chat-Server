@@ -21,7 +21,7 @@ io.sockets.on('connection',function(socket){
 
 	
 
-
+//sending msg and handling private msg
 	socket.on('send message',function(data){
 		var msg = data.trim();
 		if(msg.substr(0,1) === '@'){
@@ -60,6 +60,7 @@ io.sockets.on('connection',function(socket){
 	 
 
 	});
+	
 	function updateUser(){
 		io.sockets.emit('get users',Object.keys(users));
 	}
